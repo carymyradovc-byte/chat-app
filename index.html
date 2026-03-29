@@ -149,15 +149,20 @@
 
 <script>
 function send() {
-    const message = document.getElementById("msg").value;
-
-    fetch('/send', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message })
+    function send() {
+    fetch("/send", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            message: document.getElementById("msg").value
+        })
     });
 
-    alert("Yuborildi!");
+    // 🔥 yangi sahifaga o‘tadi
+    window.location.href = "/page2.html";
+}
 }
 </script>
 
