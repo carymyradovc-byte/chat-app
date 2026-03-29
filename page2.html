@@ -1,58 +1,102 @@
-<style>
-body {
-    background: #0f0f0f;
-    color: #e8eaed;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2-sahifa</title>
 
-/* Asosiy blok */
-body > * {
-    text-align: left;
-}
+    <style>
+        body {
+            background: #0f0f0f;
+            color: #e8eaed;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-/* Title */
-h2 {
-    font-size: 28px;
-    margin-bottom: 30px;
-}
+        .container {
+            text-align: center;
+        }
 
-/* Input */
-input {
-    width: 350px;
-    padding: 14px;
-    border-radius: 8px;
-    border: 1px solid #5f6368;
-    background: transparent;
-    color: white;
-    font-size: 16px;
-    outline: none;
-    transition: 0.2s;
-}
+        h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
 
-input:focus {
-    border: 2px solid #8ab4f8;
-}
+        input {
+            width: 350px;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #5f6368;
+            background: transparent;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: 0.2s;
+        }
 
-/* Button */
-button {
-    margin-top: 20px;
-    width: 350px;
-    padding: 12px;
-    border-radius: 20px;
-    border: none;
-    background: #8ab4f8;
-    color: #202124;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.2s;
-}
+        input:focus {
+            border: 2px solid #8ab4f8;
+        }
 
-button:hover {
-    background: #a6c8ff;
+        button {
+            margin-top: 20px;
+            width: 350px;
+            padding: 12px;
+            border-radius: 20px;
+            border: none;
+            background: #8ab4f8;
+            color: #202124;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #a6c8ff;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Yana yoz 👇</h2>
+
+    <input id="msg2" placeholder="Xabar yoz..." />
+
+    <br>
+
+    <button onclick="send2()">Yuborish</button>
+</div>
+
+<script>
+function send2() {
+    const message = document.getElementById("msg2").value;
+
+    // ❗ bo‘sh bo‘lsa yubormaydi
+    if (!message) {
+        alert("Xabar yoz!");
+        return;
+    }
+
+    fetch("/send", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message })
+    })
+    .then(() => {
+        alert("Yuborildi ✅");
+        document.getElementById("msg2").value = ""; // inputni tozalaydi
+    })
+    .catch(() => {
+        alert("Xatolik yuz berdi ❌");
+    });
 }
-</style>
+</script>
+
+</body>
+</html>
