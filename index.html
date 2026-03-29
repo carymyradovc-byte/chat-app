@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat</title>
+</head>
+<body>
+
+<h2>Menga yoz</h2>
+
+<input id="msg" placeholder="Xabar yoz...">
+<button onclick="send()">Yubor</button>
+
+<script>
+function send() {
+    const message = document.getElementById("msg").value;
+
+    fetch('/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message })
+    });
+
+    alert("Yuborildi!");
+}
+</script>
+
+</body>
+</html>
