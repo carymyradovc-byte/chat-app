@@ -1,17 +1,20 @@
 const express = require('express');
 const app = express();
-const PORT = 3000;
+
+// 🔥 MUHIM: Railway uchun port
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.static(__dirname));
 
-// xabar qabul qiladi
+// xabar qabul qilish
 app.post('/send', (req, res) => {
     const message = req.body.message;
     console.log("YANGI XABAR:", message);
-    res.send({ status: "ok" });
+    res.json({ status: "ok" });
 });
 
+// serverni ishga tushirish
 app.listen(PORT, () => {
-    console.log(`Server ishlayapti: http://localhost:${PORT}`);
+    console.log(`Server ishlayapti: ${PORT}`);
 });
