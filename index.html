@@ -3,6 +3,9 @@
 <head>
     <title>Chat</title>
 
+    <!-- Telefon uchun muhim -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             margin: 0;
@@ -74,6 +77,43 @@
             padding: 10px 25px;
             border-radius: 20px;
             cursor: pointer;
+        }
+
+        /* 📱 TELEFON UCHUN */
+        @media (max-width: 768px) {
+            body {
+                align-items: flex-start;
+                padding: 20px;
+            }
+
+            .main {
+                width: 100%;
+                height: auto;
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .left {
+                margin-bottom: 30px;
+            }
+
+            .title {
+                font-size: 24px;
+            }
+
+            input {
+                font-size: 14px;
+                padding: 14px;
+            }
+
+            .bottom {
+                justify-content: center;
+            }
+
+            button {
+                width: 100%;
+                padding: 12px;
+            }
         }
     </style>
 
