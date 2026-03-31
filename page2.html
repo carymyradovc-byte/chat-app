@@ -3,11 +3,15 @@
 <head>
     <title>Password</title>
 
+    <!-- TELEFON UCHUN -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             margin: 0;
             height: 100vh;
-            background: #202124;
+            background: url("https://images.hdqwalls.com/download/pubg-throne-jd-2932x2932.jpg") no-repeat center center;
+            background-size: cover;
             font-family: 'Roboto', Arial, sans-serif;
             display: flex;
             justify-content: center;
@@ -73,6 +77,39 @@
             padding: 10px 25px;
             border-radius: 20px;
             cursor: pointer;
+        }
+
+        /* 📱 TELEFON UCHUN MOSLASH */
+        @media (max-width: 768px) {
+            .main {
+                width: 100%;
+                height: auto;
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .left, .right {
+                width: 100%;
+            }
+
+            .title {
+                font-size: 24px;
+                text-align: center;
+            }
+
+            .email {
+                display: block;
+                text-align: center;
+                margin: 15px auto;
+            }
+
+            .bottom {
+                justify-content: center;
+            }
+
+            button {
+                width: 100%;
+            }
         }
     </style>
 
